@@ -9,14 +9,14 @@
       <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 0">Counter</TextBlock>
       <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0" Text="{Binding PulseCounter}"/>
 
-      <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 0">Counter Control</TextBlock>
-      <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0" Text="{Binding Counter}"/>
+      <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 0">Counter Control</TextBlock>
+      <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0" Text="{Binding Counter}"/>
 
-      <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 0">Direction</TextBlock>
-      <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0" Text="{Binding Direction}"/>
+      <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 0">Direction</TextBlock>
+      <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0" Text="{Binding Direction}"/>
 
-      <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 0">Frequency</TextBlock>
-      <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0" Text="{Binding Frequency, Converter={StaticResource FrequencyConverter}}"/>
+      <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10, 0">Frequency</TextBlock>
+      <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0" Text="{Binding Frequency, Converter={StaticResource FrequencyConverter}}"/>
     </Grid>
   </Grid>
 </Window>

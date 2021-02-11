@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace LiveRpi.ViewModels
 {
@@ -45,7 +46,8 @@ namespace LiveRpi.ViewModels
 
             Inputs.ForEach(i => gpioController.OpenPin(i.PinId, PinMode.Input));
 
-            var logStream = new StreamWriter(new FileStream("log.csv", FileMode.Append, FileAccess.ReadWrite, FileShare.Read, 1024 * 1024));
+//            var logStream = new StreamWriter(new FileStream("log.csv", FileMode.Append, FileAccess.ReadWrite, FileShare.Read, 1024 * 1024));
+            var logStream = new StreamWriter("log.csv", true, Encoding.UTF8, 1024 * 1024);
             Logic = new((counter, pulseCounter, direction, frequency) =>
                 {
                     _ = mainDispatcher.InvokeAsync(() => (Counter, PulseCounter, Direction, Frequency, ReceivedResult) = (counter, pulseCounter, direction, frequency, true));

@@ -29,7 +29,13 @@ namespace CommonLogic
 
         public void Step()
         {
-            void callFinished() { finished?.Invoke(counter, pulseCounter, direction, cycleCounter / cycleStart.Elapsed.TotalSeconds); (cycleCounter, counter) = (0, 0); cycleStart.Restart(); }
+            void callFinished() 
+            { 
+               finished?.Invoke(counter, pulseCounter, direction, cycleCounter / cycleStart.Elapsed.TotalSeconds); 
+               (cycleCounter, counter, pulseCounter) = (0, 0, 0);
+               isHitStop = false;
+               cycleStart.Restart(); 
+            }
 
             switch (step)
             {
@@ -43,7 +49,7 @@ namespace CommonLogic
                 case 3: 
                     if (readPin(StopPin)) { pulseCounter = counter; isHitStop = true; }
                     else if(readPin(IndexPin) && isHitStop ) callFinished();
-                    else if (readPin(PulsePin)) { step = 3; ++counter; } 
+                    else if (readPin(PulsePin)) { step = 2;  } 
                     break;
             }
 

@@ -19,6 +19,9 @@ namespace LiveRpi.ViewModels
         int counter;
         public int Counter { get => counter; set => this.RaiseAndSetIfChanged(ref counter, value); }
 
+        int pulseCounter;
+        public int PulseCounter { get => pulseCounter; set => this.RaiseAndSetIfChanged(ref pulseCounter, value); }
+
         Direction direction;
         public Direction Direction { get => direction; set => this.RaiseAndSetIfChanged(ref direction, value); }
 
@@ -43,10 +46,10 @@ namespace LiveRpi.ViewModels
             Inputs.ForEach(i => gpioController.OpenPin(i.PinId, PinMode.Input));
 
             var logStream = new StreamWriter(new FileStream("log.csv", FileMode.Append, FileAccess.ReadWrite, FileShare.Read, 1024 * 1024));
-            Logic = new((counter, direction, frequency) =>
+            Logic = new((counter, pulseCounter, direction, frequency) =>
                 {
-                    _ = mainDispatcher.InvokeAsync(() => (Counter, Direction, Frequency, ReceivedResult) = (counter, direction, frequency, true));
-                    _ = logStream.WriteLineAsync($"{DateTime.Now},{counter},{direction},{frequency}");
+                    _ = mainDispatcher.InvokeAsync(() => (Counter, PulseCounter, Direction, Frequency, ReceivedResult) = (counter, pulseCounter, direction, frequency, true));
+                    _ = logStream.WriteLineAsync($"{DateTime.Now},{counter},{pulseCounter},{direction},{frequency}");
                 },
                 pin => gpioController.Read(Inputs[pin].PinId) == PinValue.High);
 

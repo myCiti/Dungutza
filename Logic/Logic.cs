@@ -43,13 +43,13 @@ namespace CommonLogic
                 case 1: if (readPin(IndexPin)) step = 2; break;
                 case 2: 
                     if (readPin(StopPin)) { pulseCounter = counter; isHitStop = true; }
-                    else if(readPin(IndexPin) && isHitStop ) callFinished();
+                    else if(readPin(IndexPin) && isHitStop) callFinished();
                     else if (readPin(PulsePin)) { step = 3; ++counter; } 
                     break;
                 case 3: 
                     if (readPin(StopPin)) { pulseCounter = counter; isHitStop = true; }
-                    else if(readPin(IndexPin) && isHitStop ) callFinished();
-                    else if (readPin(PulsePin)) { step = 2;  } 
+                    else if(readPin(IndexPin) && isHitStop) callFinished();
+                    else if (readPin(PulsePin)) step = 2;   
                     break;
             }
 
